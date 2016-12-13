@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0491592A1B5E88A000B6827E /* AnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049159291B5E88A000B6827E /* AnimationHelper.swift */; };
+		30C883451E002F900086E542 /* FlipPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C883441E002F900086E542 /* FlipPresentAnimationController.swift */; };
+		30C883471E0038F30086E542 /* FlipDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C883461E0038F30086E542 /* FlipDismissAnimationController.swift */; };
+		30C883491E00421D0086E542 /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C883481E00421D0086E542 /* SwipeInteractionController.swift */; };
 		BB3B33A81B40386700B5C810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3B33A71B40386700B5C810 /* AppDelegate.swift */; };
 		BB3B33AD1B40386700B5C810 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3B33AB1B40386700B5C810 /* Main.storyboard */; };
 		BB3B33AF1B40386700B5C810 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3B33AE1B40386700B5C810 /* Images.xcassets */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		049159291B5E88A000B6827E /* AnimationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationHelper.swift; sourceTree = "<group>"; };
+		30C883441E002F900086E542 /* FlipPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipPresentAnimationController.swift; sourceTree = "<group>"; };
+		30C883461E0038F30086E542 /* FlipDismissAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipDismissAnimationController.swift; sourceTree = "<group>"; };
+		30C883481E00421D0086E542 /* SwipeInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwipeInteractionController.swift; path = GuessThePet/InteractionController/SwipeInteractionController.swift; sourceTree = SOURCE_ROOT; };
 		BB3B33A21B40386700B5C810 /* Guess the Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess the Pet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3B33A61B40386700B5C810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB3B33A71B40386700B5C810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 		BB3B33DE1B40654700B5C810 /* Animation controllers */ = {
 			isa = PBXGroup;
 			children = (
+				30C883441E002F900086E542 /* FlipPresentAnimationController.swift */,
+				30C883461E0038F30086E542 /* FlipDismissAnimationController.swift */,
 			);
 			path = "Animation controllers";
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 		BB3B33DF1B40654F00B5C810 /* Interaction controllers */ = {
 			isa = PBXGroup;
 			children = (
+				30C883481E00421D0086E542 /* SwipeInteractionController.swift */,
 			);
 			path = "Interaction controllers";
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 				TargetAttributes = {
 					BB3B33A11B40386700B5C810 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = WTFD83LSXR;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -222,13 +232,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C883471E0038F30086E542 /* FlipDismissAnimationController.swift in Sources */,
 				0491592A1B5E88A000B6827E /* AnimationHelper.swift in Sources */,
 				BB3B33DD1B4064E600B5C810 /* PetCardStore.swift in Sources */,
 				BB3B33CD1B4038ED00B5C810 /* RevealViewController.swift in Sources */,
+				30C883451E002F900086E542 /* FlipPresentAnimationController.swift in Sources */,
 				BB3B33D41B403BAF00B5C810 /* PetCard.swift in Sources */,
 				BB3B33A81B40386700B5C810 /* AppDelegate.swift in Sources */,
 				BB3B33D81B4049EC00B5C810 /* ViewControllerProvider.swift in Sources */,
 				BB3B33D11B4039FB00B5C810 /* CardViewController.swift in Sources */,
+				30C883491E00421D0086E542 /* SwipeInteractionController.swift in Sources */,
 				BB3B33CF1B4039A600B5C810 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WTFD83LSXR;
 				INFOPLIST_FILE = "GuessThePet/Bundle files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
@@ -360,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WTFD83LSXR;
 				INFOPLIST_FILE = "GuessThePet/Bundle files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";

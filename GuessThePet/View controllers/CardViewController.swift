@@ -26,29 +26,51 @@ private let revealSequeId = "revealSegue"
 
 class CardViewController: UIViewController {
   
-  @IBOutlet fileprivate weak var cardView: UIView!
-  @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var cardView: UIView!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
   
-  var pageIndex: Int?
-  var petCard: PetCard?
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    var pageIndex: Int?
+    var petCard: PetCard?
     
-    titleLabel.text = petCard?.description
-    cardView.layer.cornerRadius = 25
-    cardView.layer.masksToBounds = true
-    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-    cardView.addGestureRecognizer(tapRecognizer)
-  }
+    fileprivate let flipPresentationAnimationController = FlipPresentAnimationController()
+    fileprivate let flipDismissAnimationController = FlipDismissAnimationController()
+    fileprivate let swipeInteractController = SwipeInteractionController()
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == revealSequeId, let destinationViewController = segue.destination as? RevealViewController {
-      destinationViewController.petCard = petCard
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        titleLabel.text = petCard?.description
+        cardView.layer.cornerRadius = 25
+        cardView.layer.masksToBounds = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        cardView.addGestureRecognizer(tapRecognizer)
     }
-  }
   
-  func handleTap() {
-    performSegue(withIdentifier: revealSequeId, sender: nil)
-  }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == revealSequeId, let destinationViewController = segue.destination as? RevealViewController {
+            destinationViewController.petCard = petCard
+            destinationViewController.transitioningDelegate = self
+            swipeInteractController.wireToViewController(viewController: destinationViewController)
+        }
+    }
+  
+    func handleTap() {
+        performSegue(withIdentifier: revealSequeId, sender: nil)
+    }
+}
+
+extension CardViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.flipPresentationAnimationController.originFrame = cardView.frame
+        return self.flipPresentationAnimationController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        self.flipDismissAnimationController.destinationFrame = cardView.frame
+        return self.flipDismissAnimationController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return swipeInteractController.interactionInProgress ? swipeInteractController : nil
+    }
 }
